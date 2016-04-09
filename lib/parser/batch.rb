@@ -4,20 +4,31 @@ module Parser
 
     def initialize(size)
       @size = size
-      @packages = []
     end
     
-    def full?
-      len(@packages) > @size
-    end
-
     def send
-      Indexer.process(@packages)
-      @package = []
+      reset! if indexer.process(packages)
     end
 
     def fill(package)
-      @packages << package
+      packages << package
+      send if full?
+    end
+
+    def full?
+      packages.size >= @size
+    end
+
+    def packages
+      @packages ||= []
+    end
+
+    def reset!
+      @packages = []
+    end
+
+    def indexer
+      ::Indexer
     end
   end
 end

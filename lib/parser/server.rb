@@ -19,10 +19,11 @@ module Parser
         if line =~ head .. line =~ tail then
           package.concat(format(line))
         else
-          batch.fill(package)
+          # Think in replace this inject to smth
+          # more readable
+          batch.fill(package.inject(:merge))
           reset_package!
         end
-        batch.send if batch.full?
       end
       batch.flush
     end
