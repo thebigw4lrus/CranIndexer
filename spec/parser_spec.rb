@@ -22,28 +22,22 @@ describe Parser  do
   describe Parser::Batch do
     it 'gather packages and send them out correctly' do
       indexer = double('indexer')
-      allow(indexer).to receive(:process).and_return(true)
+      allow(indexer).to receive(:perform).and_return(true)
 
       batch = Parser::Batch.new(3)
-      allow(batch).to receive(:send).and_return(true)
       allow(batch).to receive(:reset!).and_return(true)
-      allow(batch).to receive(:indexer).and_return(true)
+      allow(batch).to receive(:indexer).and_return(indexer)
 
-      expected_batch = [{'Package' => '1'},
-                        {'Package' => '2'},
-                        {'Package' => '3'}]
-
-      batch.fill expected_batch[0]
-      batch.fill expected_batch[1]
+      batch.fill({'Package' => '1'})
+      batch.fill({'Package' => '2'})
       
-      expect(batch).to_not have_received(:send)
       expect(batch).to_not have_received(:reset!)
+      expect(indexer).to_not have_received(:perform)
 
-      batch.fill expected_batch[2]
+      batch.fill({'Package' => '3'})
 
-      expect(batch).to have_received(:send)
-      #expect(batch).to have_received(:reset!)
-      #expect(indexer).to have_received(:process).with(expected_batch)
+      expect(batch).to have_received(:reset!)
+      expect(indexer).to have_received(:perform)
     end
   end
 end

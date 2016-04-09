@@ -1,18 +1,16 @@
 module Parser
   class Batch
-    alias_method :flush, :send
-
     def initialize(size)
       @size = size
     end
     
-    def send
-      reset! if indexer.process(packages)
+    def process
+      reset! if indexer.perform(packages)
     end
 
     def fill(package)
       packages << package
-      send if full?
+      process if full?
     end
 
     def full?
