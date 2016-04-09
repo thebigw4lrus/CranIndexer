@@ -1,2 +1,1 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'CranIndexer'
+Dir["#{Dir.pwd}/lib/**/*.rb"].each { |f| load(f) }
