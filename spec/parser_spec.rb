@@ -13,9 +13,8 @@ describe Parser  do
 
       parser.start
 
-      expect(batch).to have_received(:fill).exactly(6).times
+      expect(batch).to have_received(:fill).with(kind_of(::Package)).exactly(6).times
       expect(parser).to have_received(:batch).exactly(7).times
-      expect(batch).to have_received(:fill).with(hash_including('Package' => 'abc'))
     end
   end
 

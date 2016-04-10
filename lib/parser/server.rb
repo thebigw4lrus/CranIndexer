@@ -1,5 +1,4 @@
 require 'open-uri'
-require 'dcf'
 
 module Parser
   class Server
@@ -15,43 +14,15 @@ module Parser
 
     def start
       file = open(@path)
-
-      while line = file.gets
-        if line =~ head .. line =~ tail then
-          package.concat(format(line))
-        else
-          # Think in replace this inject to smth
-          # more readable
-          package << {'url' => @url}
-          batch.fill(package.inject(:merge))
-          reset_package!
-        end
+      scanner = Parser::Scanner.new(file, @url, HEAD, TAIL)
+      scanner.scan do |package|
+        batch.fill(package)
       end
       batch.flush
     end
 
     def batch
       @batch ||= Batch.new(BATCH_SIZE)
-    end
-
-    def package
-      @package ||= []
-    end
-
-    def reset_package!
-      @package = []
-    end
-
-    def format(line)
-      ::Dcf.parse line
-    end
-
-    def head
-      /#{HEAD}/
-    end
-
-    def tail
-      /#{TAIL}/
     end
   end
 end
