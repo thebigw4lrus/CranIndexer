@@ -7,6 +7,7 @@ module Parser
     def process
       reset! if indexer.perform(packages)
     end
+    alias_method :flush, :process
 
     def fill(package)
       packages << package
