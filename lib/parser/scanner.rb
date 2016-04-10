@@ -2,6 +2,12 @@ require 'dcf'
 
 module Parser
   class Scanner
+    class << self
+      def parse(content)
+        ::Dcf.parse content
+      end
+    end
+
     def initialize(file, url, head, tail)
       @url = url
       @file = file
@@ -20,7 +26,7 @@ module Parser
     end
 
     def format(line)
-      ::Dcf.parse line
+      self.class.parse line
     end
 
     def package
