@@ -9,6 +9,7 @@ module Parser
     TAIL = 'NeedsCompilation:'
     
     def initialize(url)
+      @url = url
       @path = url + KEY
     end
 
@@ -21,6 +22,7 @@ module Parser
         else
           # Think in replace this inject to smth
           # more readable
+          package << {'url' => @url}
           batch.fill(package.inject(:merge))
           reset_package!
         end
