@@ -1,9 +1,13 @@
 require 'rubygems/package'
+require 'observer'
 require 'zlib'
 
 class Package
-  def initialize(url)
+  include Observable
+
+  def initialize(url, db_adapter)
     @info = {'url' => url}
+    add_observer(db_adapter)
   end
 
   def add(value)
@@ -14,6 +18,8 @@ class Package
     begin
       description = Parser::Scanner.parse(unpack)
       @info.update(description.inject(:merge))
+      changed
+      notify_observers(@info)
     rescue Gem::Package::TarInvalidError => e
       # log object would be better
       puts "Tar corrupted #{e}"

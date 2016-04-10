@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Package  do
   it 'should build the urls package correctly' do
-    package = ::Package.new('https://someserver/src/contrib/')
+    package = ::Package.new('https://someserver/src/contrib/',
+                           ::Db::Adapter.new)
     package.add([{'Package' => 'mypack'}, {'Version' => '1.0'}])
 
     expected_url = 'https://someserver/src/contrib/mypack_1.0.tar.gz'
@@ -11,7 +12,7 @@ describe Package  do
 
   it 'should adds the package-specific info correctly' do
       url = "#{Dir.pwd}/spec/support/"
-      package = ::Package.new(url)
+      package = ::Package.new(url, ::Db::Adapter.new)
       expect(package.to_hash).to eq({'url' => url})
 
       package.add([{'Package' => 'abbyyR'},

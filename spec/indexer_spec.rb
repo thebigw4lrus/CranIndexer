@@ -3,8 +3,9 @@ require 'spec_helper'
 describe Indexer do
   describe Indexer::Packages do
     it 'trigger succesfully the enrich info process' do
-      package1 = ::Package.new('url1')
-      package2 = ::Package.new('url2')
+      db_adapter = ::Db::Adapter.new
+      package1 = ::Package.new('url1', db_adapter)
+      package2 = ::Package.new('url2', db_adapter)
       allow(package1).to receive(:enrich).and_return(true)
       allow(package2).to receive(:enrich).and_return(true)
 
