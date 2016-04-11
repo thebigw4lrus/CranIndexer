@@ -7,6 +7,7 @@ class Package
 
   def initialize(url)
     @info = {'url' => url}
+    @sent = false
     add_observer(::Db::Adapter.instance)
   end
 
@@ -19,7 +20,7 @@ class Package
       description = Parser::Scanner.parse(unpack)
       @info.update(description.inject(:merge))
       changed
-      notify_observers(@info)
+      notify_observers(self)
     rescue Gem::Package::TarInvalidError => e
       # log object would be better
       puts "Tar corrupted #{e}"
@@ -42,6 +43,14 @@ class Package
     [@info['url'],
      @info['Package'], '_',
      @info['Version'], '.tar.gz'].join
+  end
+
+  def sent!
+    @sent = true
+  end
+
+  def sent?
+    @sent
   end
 
   def to_hash

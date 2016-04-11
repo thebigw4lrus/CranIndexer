@@ -17,13 +17,12 @@ module Db
     end
 
     def process
-      # Here will be the Db store logic
-      # It will be async and batch-fashioned
-      @@queue
+      client.insert(@@queue.clone)
+      @@queue.reject! {|p| p.sent?}
     end
 
-    def update(info)
-      @@queue << info
+    def update(package)
+      @@queue << package
       process if full?
     end
 
@@ -31,8 +30,9 @@ module Db
       @@queue.size >= @@size
     end
 
-    def queue
-      self.class.queue
+    def client
+      @@client ||= Db::MongoClient.new('packages')
     end
+
   end
 end
