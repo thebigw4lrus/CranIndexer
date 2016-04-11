@@ -11,7 +11,6 @@ module Parser
     def initialize(file, url, head, tail)
       @url = url
       @file = file
-      @db_adapter = ::Db::Adapter.new
       @head, @tail = head, tail
     end
 
@@ -35,7 +34,7 @@ module Parser
     end
 
     def package!
-      @package = ::Package.new(@url, @db_adapter)
+      @package = ::Package.new(@url)
     end
 
     def head

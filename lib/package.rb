@@ -5,9 +5,9 @@ require 'zlib'
 class Package
   include Observable
 
-  def initialize(url, db_adapter)
+  def initialize(url)
     @info = {'url' => url}
-    add_observer(db_adapter)
+    add_observer(::Db::Adapter.instance)
   end
 
   def add(value)

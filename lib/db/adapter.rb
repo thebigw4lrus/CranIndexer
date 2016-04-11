@@ -1,5 +1,8 @@
+require 'singleton'
+
 module Db
   class Adapter
+    include Singleton
     @@size = 10
     @@queue = []
 
