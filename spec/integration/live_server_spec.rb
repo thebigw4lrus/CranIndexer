@@ -10,6 +10,6 @@ describe "End-to-End" do
     parser = Parser::Server.new(SERVER, 50)
     parser.start
 
-    expect(db.find.to_a.size).to eq(49)
+    expect(db.find.to_a.size).to eq(50)
   end
 end
