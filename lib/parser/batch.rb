@@ -1,3 +1,10 @@
+=begin
+  * Name: Parser::Batch
+  * Description: Represents a single batch of the PACKAGE file
+  * Input: ::Parser::Batch.new(<size_of_the_batch>)
+  * Author: Javier A. Contreras V.
+  * Date: Apr 12, 2016
+=end
 module Parser
   class Batch
     def initialize(size)

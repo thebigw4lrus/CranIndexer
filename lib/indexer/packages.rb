@@ -1,3 +1,10 @@
+=begin
+  * Name: Indexer::Packages
+  * Description: Start the indexers as threads per batch
+  * Input: ::Indexer::Packages.new(<array_of_packages_object>)
+  * Author: Javier A. Contreras V.
+  * Date: Apr 12, 2016
+=end
 module Indexer
   class Packages
     class << self

@@ -1,3 +1,9 @@
+=begin
+  * Name: Db::Adapter
+  * Description: Handle the adaptation between the backend and the DB
+  * Author: Javier A. Contreras V.
+  * Date: Apr 12, 2016
+=end
 require 'singleton'
 
 module Db

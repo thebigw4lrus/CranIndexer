@@ -1,3 +1,9 @@
+=begin
+  * Name: Settings
+  * Description: Keep all the settings in memory as a singleton class
+  * Author: Javier A. Contreras V.
+  * Date: Apr 12, 2016
+=end
 require 'yaml'
 
 module Settings

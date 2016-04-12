@@ -1,3 +1,10 @@
+=begin
+  * Name: Package
+  * Description: Central class of the whole design.  Encapsulate the logic of the package
+  * Input: Package.new(<cran_server>, <limit_of_packages_to_parse>)
+  * Author: Javier A. Contreras V.
+  * Date: Apr 12, 2016
+=end
 require 'rubygems/package'
 require 'observer'
 require 'zlib'

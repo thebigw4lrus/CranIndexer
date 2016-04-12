@@ -1,3 +1,10 @@
+=begin
+  * Name: Parser::Scanner
+  * Description: Reads the PACKAGE file, and parse it in a stream fashion way
+  * Input: ::Parser::Scanner.new(<io_object>, <cran_server>, <head_package> <tail_package>)
+  * Author: Javier A. Contreras V.
+  * Date: Apr 12, 2016
+=end
 require 'dcf'
 
 module Parser

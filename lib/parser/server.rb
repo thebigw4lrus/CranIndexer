@@ -1,3 +1,10 @@
+=begin
+  * Name: Parser::Server
+  * Description: This class orchestrates the PACKAGES parse process.
+  * Input: ::Parser::Server.new(<cran_server>, <limit_of_packages_to_parse>)
+  * Author: Javier A. Contreras V.
+  * Date: Apr 12, 2016
+=end
 require 'open-uri'
 
 module Parser

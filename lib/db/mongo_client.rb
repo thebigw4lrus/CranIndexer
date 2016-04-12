@@ -1,3 +1,10 @@
+=begin
+  * Name: Db::MongoClient
+  * Description: Takes care of build the queries and insert records onto the Db
+  * Input: Db::MongoClient.new(<document_name>)
+  * Author: Javier A. Contreras V.
+  * Date: Apr 12, 2016
+=end
 require 'mongo'
 module Db
   class MongoClient
