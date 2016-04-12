@@ -18,17 +18,15 @@ module Parser
     def scan
       while line = @file.gets
         if line =~ head .. line =~ tail then
-          package.add(format(line))
+          puts("***** FORMAT #{line} **** ")
+          package.add(line)
         else
           @scanned += 1
+          package.format!
           yield package, @scanned if block_given?
           package!
         end
       end
-    end
-
-    def format(line)
-      self.class.parse line
     end
 
     def package

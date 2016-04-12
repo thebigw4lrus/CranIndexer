@@ -2,7 +2,7 @@ require 'open-uri'
 
 module Parser
   class Server
-    BATCH_SIZE = 300
+    BATCH_SIZE = 5
     KEY = 'PACKAGES'
     HEAD = 'Package:'
     TAIL = 'NeedsCompilation:'

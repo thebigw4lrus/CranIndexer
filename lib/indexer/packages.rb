@@ -12,8 +12,8 @@ module Indexer
 
     def start
       @packages.each do |pck|
-       threads << ::Thread.new(pck) {|pck| pck.enrich}
-       threads.each {|thr| thr.join}
+        threads << ::Thread.new(pck) {|pck| pck.enrich}
+        threads.each {|thr| thr.join}
       end
     end
 

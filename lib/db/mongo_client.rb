@@ -20,6 +20,7 @@ module Db
     end
 
     def insert(packages)
+      puts("inserting in db")
       queries = packages.map {|p| build_query(p.to_hash)}
       if collection.bulk_write(queries, :ordered => true) then
         packages.each(&:sent!) 

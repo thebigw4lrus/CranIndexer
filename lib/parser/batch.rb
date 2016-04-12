@@ -27,7 +27,7 @@ module Parser
     end
 
     def indexer
-      ::Indexer
+      ::Indexer::Packages
     end
   end
 end

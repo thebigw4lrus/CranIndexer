@@ -8,11 +8,16 @@ class Package
   def initialize(url)
     @info = {'url' => url}
     @sent = false
+    @raw_info = ""
     add_observer(::Db::Adapter.instance)
   end
 
   def add(value)
-    @info.update(value.inject(:merge))
+    @raw_info << value
+  end
+
+  def format!
+    @info.update(::Parser::Scanner.parse(@raw_info)[0])
   end
 
   def enrich

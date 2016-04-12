@@ -1,3 +1,10 @@
+Package: acc
+Version: 1.2.4
+Depends: R (>= 2.10), zoo, mhsmm, PhysicalActivity, nleqslv, plyr,
+        methods
+License: GNU General Public License (>= 3)
+NeedsCompilation: no
+
 Package: A3
 Version: 1.0.0
 Depends: R (>= 2.15.0), xtable, pbapply

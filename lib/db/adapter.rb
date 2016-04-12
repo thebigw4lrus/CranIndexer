@@ -3,7 +3,7 @@ require 'singleton'
 module Db
   class Adapter
     include Singleton
-    @@size = 10
+    @@size = 5
     @@queue = []
 
     class << self
