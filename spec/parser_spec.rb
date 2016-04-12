@@ -18,6 +18,19 @@ describe Parser  do
     end
   end
 
+  describe Parser::Server do
+    it 'limits the packages parsed based on the params' do
+      parser = Parser::Server.new("#{Dir.pwd}/spec/support/", 3)
+      allow(parser.batch).to receive(:process).and_return(true)
+      allow(parser.batch).to receive(:flush).and_return(true)
+      allow(parser.batch).to receive(:full?).and_return(false)
+
+      parser.start
+
+      expect(parser.batch).to have_received(:full?).exactly(3).times
+    end
+  end
+
   describe Parser::Batch do
     it 'gather packages and send them out correctly' do
       indexer = double('indexer')

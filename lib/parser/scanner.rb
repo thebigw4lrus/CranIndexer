@@ -10,6 +10,7 @@ module Parser
 
     def initialize(file, url, head, tail)
       @url = url
+      @scanned = 0
       @file = file
       @head, @tail = head, tail
     end
@@ -19,7 +20,8 @@ module Parser
         if line =~ head .. line =~ tail then
           package.add(format(line))
         else
-          yield(package) if block_given?
+          @scanned += 1
+          yield package, @scanned if block_given?
           package!
         end
       end
