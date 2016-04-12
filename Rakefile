@@ -27,12 +27,17 @@ end
 
 # Run task
 namespace :run do
+  # Execute the indexer
   task :now do
     start_parser
   end
-
+  # Schedule the indexer
   task :schedule do
     schedule_parser
+  end
+  # Start the webserver
+  task :server do
+    ruby "app/server.rb"
   end
 end
 
