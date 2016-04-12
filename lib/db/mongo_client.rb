@@ -1,7 +1,7 @@
 require 'mongo'
 module Db
   class MongoClient
-    DBNAME = 'cran_server'
+    DBNAME = ::Settings.db
     @@mongo = Mongo::Client.new([ '127.0.0.1:27017' ],
                                 :database => DBNAME)
     def initialize(docname)

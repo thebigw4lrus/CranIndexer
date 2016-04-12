@@ -1,11 +1,10 @@
 require "rspec/core/rake_task"
 require 'rufus-scheduler'
 
-SERVER ='https://cran.r-project.org/src/contrib/' 
-
 def start_parser
+  Dir["#{Dir.pwd}/lib/settings/*.rb"].each { |f| load(f) }
   Dir["#{Dir.pwd}/lib/**/*.rb"].each { |f| load(f) }
-  Parser::Server.new(SERVER, 50).start
+  Parser::Server.new(::Settings.server, ::Settings.limit).start
 end
 
 def schedule_parser

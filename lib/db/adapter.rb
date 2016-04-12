@@ -3,7 +3,7 @@ require 'singleton'
 module Db
   class Adapter
     include Singleton
-    @@size = 5
+    @@size = ::Settings.db_batch
     @@queue = []
 
     class << self

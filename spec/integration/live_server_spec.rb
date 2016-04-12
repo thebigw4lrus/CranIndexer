@@ -1,9 +1,10 @@
 require 'spec_helper'
 require 'mongo'
-SERVER = 'https://cran.r-project.org/src/contrib/'
+SERVER = ::Settings.server
+DB = ::Settings.db
 describe "End-to-End" do
   it 'runs end to end' do
-    client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => "cran_server")
+    client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => DB)
     client.database.drop
     db = client['packages']
 

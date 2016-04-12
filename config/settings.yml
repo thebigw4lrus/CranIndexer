@@ -1,0 +1,14 @@
+# Config File
+#
+# Batch size to parse the PACKAGES file
+parser_batch: 5
+#
+# Batch size to insert records in DB
+db_batch: 5
+#
+# Name of the DB
+db: cran_server
+#
+# Server and limit of parsing
+server: 'https://cran.r-project.org/src/contrib/' 
+limit: 50
