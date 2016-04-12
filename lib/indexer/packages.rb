@@ -9,7 +9,7 @@ module Indexer
   class Packages
     class << self
       def perform(packages)
-        self.new(packages).start
+        new(packages).start
       end
     end
 
@@ -19,8 +19,8 @@ module Indexer
 
     def start
       @packages.each do |pck|
-        threads << ::Thread.new(pck) {|pck| pck.enrich}
-        threads.each {|thr| thr.join}
+        threads << ::Thread.new(pck) { |pck| pck.enrich }
+        threads.each { |thr| thr.join }
       end
     end
 

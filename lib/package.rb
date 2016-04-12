@@ -1,6 +1,6 @@
 =begin
   * Name: Package
-  * Description: Central class of the whole design.  Encapsulate the logic of the package
+  * Description: Central class of the whole design. A classic OO class.
   * Input: Package.new(<cran_server>, <limit_of_packages_to_parse>)
   * Author: Javier A. Contreras V.
   * Date: Apr 12, 2016
@@ -13,9 +13,9 @@ class Package
   include Observable
 
   def initialize(url)
-    @info = {'url' => url}
+    @info = { 'url' => url }
     @sent = false
-    @raw_info = ""
+    @raw_info = ''
     add_observer(::Db::Adapter.instance)
   end
 
@@ -44,9 +44,7 @@ class Package
   def unpack
       source = open(url)
       gz = Zlib::GzipReader.new(source)
-      tar = Gem::Package::TarReader.new(gz)
-
-      description = tar.detect do |d|
+      Gem::Package::TarReader.new(gz).detect do |d|
         d.full_name.include?('DESCRIPTION')
       end.read
   end

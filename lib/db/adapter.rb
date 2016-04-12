@@ -24,7 +24,7 @@ module Db
 
     def process
       client.insert(@@queue.clone)
-      @@queue.reject! {|p| p.sent?}
+      @@queue.reject! { |p| p.sent? }
     end
 
     def update(package)
@@ -39,6 +39,5 @@ module Db
     def client
       @@client ||= Db::MongoClient.new('packages')
     end
-
   end
 end

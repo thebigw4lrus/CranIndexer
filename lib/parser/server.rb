@@ -13,8 +13,10 @@ module Parser
     KEY = 'PACKAGES'
     HEAD = 'Package:'
     TAIL = 'NeedsCompilation:'
+
+    attr_reader :limit
     
-    def initialize(url, limit=nil)
+    def initialize(url, limit = nil)
       @url = url
       @limit = limit
       @path = url + KEY
@@ -32,10 +34,6 @@ module Parser
 
     def batch
       @batch ||= Batch.new(BATCH_SIZE)
-    end
-
-    def limit
-      @limit
     end
   end
 end

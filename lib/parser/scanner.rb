@@ -1,7 +1,7 @@
 =begin
   * Name: Parser::Scanner
   * Description: Reads the PACKAGE file, and parse it in a stream fashion way
-  * Input: ::Parser::Scanner.new(<io_object>, <cran_server>, <head_package> <tail_package>)
+  * Input: ::Parser::Scanner.new(<io_object>, <cran_server>, <head> <tail>)
   * Author: Javier A. Contreras V.
   * Date: Apr 12, 2016
 =end
@@ -19,13 +19,13 @@ module Parser
       @url = url
       @scanned = 0
       @file = file
-      @head, @tail = head, tail
+      @head = head
+      @tail = tail
     end
 
     def scan
       while line = @file.gets
-        if line =~ head .. line =~ tail then
-          puts("***** FORMAT #{line} **** ")
+        if line =~ head .. line =~ tail
           package.add(line)
         else
           @scanned += 1

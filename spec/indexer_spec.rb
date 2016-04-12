@@ -15,4 +15,3 @@ describe Indexer do
     end
   end
 end
-

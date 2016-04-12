@@ -13,7 +13,8 @@ describe Parser  do
 
       parser.start
 
-      expect(batch).to have_received(:fill).with(kind_of(::Package)).exactly(7).times
+      expect(batch).to have_received(:fill).
+        with(kind_of(::Package)).exactly(7).times
       expect(parser).to have_received(:batch).exactly(8).times
     end
   end
@@ -27,7 +28,8 @@ describe Parser  do
 
       parser.start
 
-      expect(parser.batch).to have_received(:full?).exactly(3).times
+      expect(parser.batch).to have_received(:full?).
+        exactly(3).times
     end
   end
 

@@ -1,4 +1,4 @@
-require "rspec/core/rake_task"
+require 'rspec/core/rake_task'
 require 'rufus-scheduler'
 
 def start_parser
@@ -8,11 +8,11 @@ def start_parser
 end
 
 def schedule_parser
-    scheduler = Rufus::Scheduler.new
-    scheduler.schedule '00:00' do
-      start_parser
-    end
-    scheduler.join
+  scheduler = Rufus::Scheduler.new
+  scheduler.schedule '00:00' do
+    start_parser
+  end
+  scheduler.join
 end
 
 # Test tasks
@@ -37,10 +37,9 @@ namespace :run do
   end
   # Start the webserver
   task :server do
-    ruby "app/server.rb"
+    ruby 'app/server.rb'
   end
 end
-
 
 
 
