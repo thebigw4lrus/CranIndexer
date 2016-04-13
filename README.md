@@ -1,4 +1,3 @@
-# CranIndexer
 CRAN Server Indexer
 ----------------------------------------
 When it comes to R language packages, we may say that there is not a good tool for downloading, installing (managing in general).  They are used to use tools like apt, rpm and the package installer R-studio itself.  This proposal goes directly to contribute to these people offering a way to index such packages. This is a **minimalistic** approach on how to contribute with these people.
