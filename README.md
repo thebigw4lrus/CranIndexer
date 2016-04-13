@@ -26,9 +26,11 @@ Composition and ruby mixings is present across all the design.
 - All the configuration is centralized in config/settings.yml
 - Unit test / Integration tests are present
 - Use of known patterns to break the logic into readable pieces
+
 ### The bad
 - At this stage, this proposal as is written is not geographically scalable
 - Probably more integration tests are required
+
 ### The ugly
 - Package view was implemented with sinatra with no style definiton
 - Error handling could be improved
@@ -46,11 +48,14 @@ I will propose for the future implement some message bus log-centric system (lik
 ## How to use it?
 ### Tests
 > rake spec:unit
+
 > rake spec:integration
 
 ### Run
 > rake run:now
+
 > rake run:schedule
+
 > rake run:server
 
 NOTE: MongoDB service is required to be installed for the integration tests and for the execution in general
