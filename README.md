@@ -29,7 +29,7 @@ Composition and ruby mixings is present across all the design.
 - It was designed thinking on using some publish-subscribe service message system to scale it
 
 ### The bad
-- At this stage, this proposal as is written is not geographically scalable
+- At this stage, the code as is written currently, is not geographically scalable
 - A bit naive with the error handling
 - No log handler was included
 
