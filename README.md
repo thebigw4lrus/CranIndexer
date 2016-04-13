@@ -11,10 +11,10 @@ Basically the idea is to create packages based on on the PACKAGES file, in a bat
 
 ## Patterns used:
 ### singleton pattern
-Among others obvious OO techniques, The singleton pattern was implemented on Db::Adapter class.  The reason of this is that we need only one single instance which gather all the ready to send packages.
+The singleton pattern was implemented on Db::Adapter class.  The reason of this is that we need only one single instance which gather all the ready to send packages.
 
 ### Observer pattern
-In order to use what ruby provides in terms of this pattern, Observer module was mixed with Package class. Everytime a package enrich its definition (go to Cran server and download the package description), an update in the Db::Adapter ready-to-send queue is required, so this adapter will take care of implement the batching and will trigger the bulk insertion.
+Observer module was mixed with Package class. Everytime a package enrich its definition (go to Cran server and download the package description), an update in the Db::Adapter ready-to-send queue is required, so this adapter will take care of implement the batching and will trigger the bulk insertion.
 
 ### Composition
 Composition and ruby mixings is present across all the design.
@@ -40,8 +40,7 @@ Composition and ruby mixings is present across all the design.
 
 ##  What's next?
 In terms of scrum, this would be the outcome of the very first sprint. This is usable but not geographically distributable.
-I will propose for the future implement a **publish-subscribe log-centric bus** (like kafka or rabbit mq), so we could have the same components but with a little of effort, talking through this (i.e.: Parser parse the PACKAGE files and generates a message to be inserted in a queue. Several distributed instances of Indexer could be listening to this queue places, ready to process each message (consuming in a balanced way). Under this approach we could spread components in different locations, achieving a decent scalation of these.  Also this would allow us to improve the batching mechanism, for both the PACKAGE file (source) and the DB (destination).
-
+I would propose for the future implement a **publish-subscribe log-centric bus** (like kafka or rabbit mq), so we could have the same components but with a little of effort, talking through this (i.e.: Parser parse the PACKAGE files and generates a message to be inserted in a queue. Several distributed instances of Indexer could be listening to this queue places, ready to process each message (balanced consumer). Under this approach we could spread components in different locations, achieving a decent scalation of these, also this result in a simplification of the logic. 
 ## What was used to build this?
 - Ruby 2.0.0
 - Bundle 1.11.2
