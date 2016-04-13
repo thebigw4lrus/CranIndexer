@@ -40,7 +40,7 @@ Composition and ruby mixings is present across all the design.
 
 ##  What's next?
 In terms of scrum, this would be the outcome of the very first sprint. This is usable but not geographically distributable.
-I would propose for the future implement a **publish-subscribe log-centric bus** (like kafka or rabbit mq), so we could have the same components but with a little of effort, talking through this (i.e.: Parser parse the PACKAGE files and generates a message to be inserted in a queue. Several distributed instances of Indexer could be listening to this queue places, ready to process each message (balanced consumer). Under this approach we could spread components in different locations, achieving a decent scalation of these, also this result in a simplification of the logic. 
+I would propose for the future implement a **publish-subscribe log-centric bus** (like kafka or rabbit mq), so we could have the same components but with communicating through this mean(i.e.: ***Parser*** parse the PACKAGE files and generates a message to be inserted in a queue. An intermmediate component ***enricher*** could extend the message with the info in every tar.gz file and reinsert the message to the bus, and finally several distributed instances of ***Indexer*** could be listening to this topic, ready to index each message (balanced consumer). Under this approach we could spread components in different locations, achieving a decent scalation, resulting in more simple and self-contained components.
 ## What was used to build this?
 - Ruby 2.0.0
 - Bundle 1.11.2
