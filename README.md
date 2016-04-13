@@ -31,6 +31,7 @@ Composition and ruby mixings is present across all the design.
 ### The bad
 - At this stage, this proposal as is written is not geographically scalable
 - A bit naive with the error handling
+- No log handler was included
 
 ### The ugly
 - Package view(sinatra server) was implemented with no style definiton
